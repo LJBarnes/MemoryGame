@@ -115,6 +115,22 @@ a:visited {
 
 }
 
+.card.matched .card-value {
+    animation: dance 1s linear infinite 500ms;
+}
+
+@keyframes dance {
+    0%, 100% {
+        transform: rotate(0);
+    }
+    25% {
+        transform: rotate(-30deg);
+    }
+    75% {
+        transform: rotate(30deg);
+    }
+}
+
 .sun {
     position: absolute;
     width: 30px;
