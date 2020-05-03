@@ -1,10 +1,15 @@
 .page-title {
     font-family: 'Itim', cursive;
+    color: lavender;
+    font-size: 6em;
+    text-align: center;
 }
 
 .game-info {
     font-family: 'Inconsolata', monospace;
-    font-size: 1.5em;
+    font-size: 4em;
+    color: lavender;
+    text-align: center;
 }
 
 *{
@@ -19,3 +24,4 @@ body {
 html {
     min-height: 100vh;
 }
+
