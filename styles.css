@@ -41,7 +41,8 @@ html {
 }
 
 .card {
-    background:black;
+    background:#280558;
+    position: relative;
     height: 175px;
     width: 125px;
 }
@@ -59,6 +60,61 @@ a:link {
 
 a:visited {
     color: lightpink;
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    backface-visibility: hidden;
+    
+}
+
+.card-front {
+    transform: rotateX(189deg);
+}
+
+.sun {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+}
+
+.sun-top-left {
+    top: 0;
+    left: 0;
+}
+
+.sun-top-right {
+    top: 0;
+    right: 0;
+}
+
+.sun-bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.sun-bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+.basket {
+    /* align-self: flex-start; */
+    transform: translateY(-10px);
+    transition: transform 100ms ease-in-out;
+    width: 90px;
+    height: 90px;
+    
+}
+
+.card-back:hover .basket {
+    transform: translateY(0)
 }
 
 
