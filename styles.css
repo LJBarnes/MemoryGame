@@ -1,15 +1,21 @@
 .page-title {
     font-family: 'Itim', cursive;
     color: lavender;
-    font-size: 6em;
+    font-size: 5em;
     text-align: center;
 }
 
+.game-info-container {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+  }
+
 .game-info {
     font-family: 'Inconsolata', monospace;
-    font-size: 4em;
+    font-size: 3em;
     color: lavender;
-    text-align: center;
+    
 }
 
 *{
@@ -24,4 +30,35 @@ body {
 html {
     min-height: 100vh;
 }
+
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 10px;
+    margin: 50px;
+    justify-content: center;
+    perspective: 500px;
+}
+
+.card {
+    background:black;
+    height: 175px;
+    width: 125px;
+}
+
+footer {
+    color:lavender;
+    margin-top: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+a:link {
+    color:lightblue;
+}
+
+a:visited {
+    color: lightpink;
+}
+
 
