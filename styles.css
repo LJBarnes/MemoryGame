@@ -6,3 +6,16 @@
     font-family: 'Inconsolata', monospace;
     font-size: 1.5em;
 }
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(#667eea, #764ba2);
+}
+
+html {
+    min-height: 100vh;
+}
