@@ -90,6 +90,11 @@ a:visited {
     position: absolute;
     width: 30px;
     height: 30px;
+    transition: width 100ms ease-in-out, height 100ms ease-in-out;
+}
+.card-back:hover .sun {
+    width: 42px;
+    height: 42px; 
 }
 
 .sun-top-left {
