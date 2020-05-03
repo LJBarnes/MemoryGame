@@ -41,7 +41,7 @@ html {
 }
 
 .card {
-    background:#280558;
+    
     position: relative;
     height: 175px;
     width: 125px;
@@ -71,7 +71,15 @@ a:visited {
     align-items: center;
     overflow: hidden;
     backface-visibility: hidden;
+    border-radius: 12px;
+    border-width: 1px;
+    border-style: solid;
     
+}
+
+.card-back {
+    background:#280558;
+    border-color: #fdb3ff; 
 }
 
 .card-front {
