@@ -13,8 +13,8 @@ class MixOrMatch {
         this.timeRemaining = this.totalTime;
         this.matchedCards = [];
         this.busy = true;
-        setTimeout(()=> {
-            this.shuffleCards();
+        setTimeout(() => {
+            this.shuffleCards(this.cardsArray);
             this.countDown = this.startCountDown();
             this.busy = false;
         }, 500);
@@ -37,10 +37,11 @@ class MixOrMatch {
             this.ticker.innerText = this.totalClicks;
             card.classList.add('visible');
 
-            if(this.cardToCheck)
+            if(this.cardToCheck) {
                 this.checkForCardMatch(card);
-            else
+            }else {
                 this.cardToCheck= card;
+            }
         }
     }
 
@@ -53,16 +54,17 @@ class MixOrMatch {
         this.cardToCheck = null;
     }
 
-    cardMatch(card1, card2){
+    cardMatch(card1, card2) {
         this.matchedCards.push(card1);
         this.matchedCards.push(card2);
         card1.classList.add('matched');
+        card2.classList.add('matched');
         
         if(this.matchedCards.length === this.cardsArray.length)
             this.victory();
     }
 
-    cardMisMatch(card1,card2){
+    cardMismatch(card1, card2) {
         this.busy = true;
         setTimeout(() => {
             card1.classList.remove('visible');
@@ -105,11 +107,16 @@ class MixOrMatch {
         }
     }
 
-    canFlipCard(card){
-        return (!this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck)
+    canFlipCard(card) {
+        return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
     }
 }
 
+if (document.readyState === "loading"){
+    document.addEventListener('DOMContentLoaded', ready());
+} else {
+    ready();
+}
 
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
@@ -129,10 +136,6 @@ function ready() {
     });
 }
 
-if (document.readyState === "loading"){
-    document.addEventListener('DOMContentLoaded', ready());
-} else {
-    ready();
-}
+
 
 // new MixOrMatch(100,)
