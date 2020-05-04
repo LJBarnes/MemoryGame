@@ -15,7 +15,7 @@ class MixOrMatch {
         this.busy = true;
         setTimeout(()=> {
             this.shuffleCards();
-            this.countdown = this.startCountdown();
+            this.countDown = this.startCountDown();
             this.busy = false;
         }, 500);
         this.hideCards();
@@ -37,11 +37,66 @@ class MixOrMatch {
             this.ticker.innerText = this.totalClicks;
             card.classList.add('visible');
 
-            // if statement for match/nonmatch
+            if(this.cardToCheck)
+                this.checkForCardMatch(card);
+            else
+                this.cardToCheck= card;
         }
     }
 
+    checkForCardMatch(card){
+      if(this.getCardType(card) === this.getCardType(this.cardToCheck))
+      this.cardMatch(card, this.cardToCheck);
+        else
+        this.cardMisMatch(card, this.cardToCheck);
+
+        this.cardToCheck = null;
+    }
+
+    cardMatch(card1, card2){
+        this.matchedCards.push(card1);
+        this.matchedCards.push(card2);
+        card1.classList.add('matched');
+        
+        if(this.matchedCards.length === this.cardsArray.length)
+            this.victory();
+    }
+
+    cardMisMatch(card1,card2){
+        this.busy = true;
+        setTimeout(() => {
+            card1.classList.remove('visible');
+            card2.classList.remove('visible');
+            this.busy = false;
+        }, 1000);
+    }
+
+    getCardType(card){
+        return card.getElementsByClassName('card-value')[0].src;
+    }
+
+    startCountDown() {
+        return setInterval(() => {
+            this.timeRemaining--;
+            this.timer.innerText = this.timeRemaining;
+            if(this.timeRemaining === 0)
+            this.gameOver();
+        }, 1000);
+    }
+
+    gameOver(){
+        clearInterval(this.countDown);
+        document.getElementById('game-over').classList.add('visible');
+    }
+
+    victory(){
+        clearInterval(this.countDown);
+        document.getElementById('victory').classList.add('visible');
+        this.hideCards();
+    }
+
     shuffleCards(){
+        // Fisher-Yates Shuffle Algorithm
         for(let i = this.cardsArray.length -1; i >0; i--) {
             // math.random creates a random float between 0 and one, excluding one
             let randIndex = Math.floor(Math.random()* (i+1));
@@ -51,8 +106,7 @@ class MixOrMatch {
     }
 
     canFlipCard(card){
-        return true;
-        // return (!this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck)
+        return (!this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck)
     }
 }
 
