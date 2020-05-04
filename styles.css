@@ -177,22 +177,23 @@ a:visited {
 
 .overlay-text {
     display: none;
-   position: fixed;
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   
-   justify-content: center;
-   align-items: center;
-   z-index: 100;
-   color: #FFBB89;
-   font-family: 'Itim', cursive;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;   
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: #FFBB89;
+    font-family: 'Itim', cursive;
+    
 }
 
 .overlay-text.visible {
     display: flex;
-    animation: overlay-grow 500 ms forwards;
+    flex-direction: column;
+    animation: overlay-grow 500ms forwards;
 }
 
 @keyframes overlay-grow {
@@ -205,5 +206,18 @@ a:visited {
         background-color: rgba(0,0,0,.8);
 
     }
+    }
+.overlay-text-small {
+    font-size: .3em;
+}
+
+@media (max-width: 600px) {
+    .game-container {
+        grid-template-columns: repeat(2,auto);
+    }
+
+    .game-info-container {
+        flex-direction:column;
+        align-items: center;
     }
 }
