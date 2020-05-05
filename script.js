@@ -64,7 +64,7 @@ class MixOrMatch {
             this.victory();
     }
 
-    cardMismatch(card1, card2) {
+    cardMisMatch(card1,card2){
         this.busy = true;
         setTimeout(() => {
             card1.classList.remove('visible');
@@ -107,8 +107,8 @@ class MixOrMatch {
         }
     }
 
-    canFlipCard(card) {
-        return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
+    canFlipCard(card){
+        return (!this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck)
     }
 }
 
@@ -135,7 +135,3 @@ function ready() {
       });  
     });
 }
-
-
-
-// new MixOrMatch(100,)
